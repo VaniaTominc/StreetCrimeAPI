@@ -1,0 +1,18 @@
+@import 'chart';
+@import 'chart-bar';
+
+:root {
+  background: #1b4080;
+}
+
+input {
+  width: 500px;
+  height: 50px;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-size: 25px;
+}
+
+input[type="text"] {
+  padding: 10px;
+}
