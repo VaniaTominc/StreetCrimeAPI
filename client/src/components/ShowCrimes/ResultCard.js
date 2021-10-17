@@ -6,7 +6,7 @@ const ResultCard = props => {
 
   //console.log('props ResultCard >>>>', props.location.state.address)
 
-  const { address } = (props.location && props.location.state) || {}
+  // const { address } = (props.location && props.location.state) || {}
 
   return (
 
@@ -18,7 +18,7 @@ const ResultCard = props => {
 
       <div>
         <div>
-          <strong>Address:</strong> {address}
+          {/* <strong>Address:</strong> {address} */}
           <ShowCrimes dataAddress={props.location.state.address} />
         </div>
       </div>

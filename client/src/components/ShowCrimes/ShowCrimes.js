@@ -5,7 +5,7 @@ import Crimes from './Crimes'
 
 const ShowCrimes = props => {
 
-  console.log('Incoming props in ShowCrimes >>>>', props)
+  // console.log('Incoming props in ShowCrimes >>>>', props)
 
   const [address, setAddress] = useState([])
   const searchAddress = props.dataAddress
@@ -26,7 +26,6 @@ const ShowCrimes = props => {
         console.log('British address >>>', britishAddress)
         
         setAddress(britishAddress)
-        // console.log('Incoming data >>>', data.items)
 
 
         britishAddress.map(item => {

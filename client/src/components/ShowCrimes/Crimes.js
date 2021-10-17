@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect, Fragment, useCallback } from 'react'
 import axios from 'axios'
 import CrimesFilter from './CrimesFilter'
@@ -97,42 +98,64 @@ const Crimes = props => {
   const latitude = props.item[0]
   const longitude = props.item[1]
 
-  const [mergedCrimes, setMergedCrimes] = useState([])
-
 
   const [separateMonthData, setSeparateMonthData] = useState([])
 
 
+  // ! PLAYING WITH NUMBERS
+
+  const [numberYear, setNumberYear] = useState('')
+
+  const [isLoading, setIsLoading] = useState(false)
+
   const [categories, setCategories] = useState([])
+
+  // ! END PLAYING WITH NUMBERS
+
 
   useEffect(() => {
     const getData = async () => {
       try {
         const newArray = []
         const months = [null,'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-        const monthWithCrimesData = []
+        const monthWithCrimesData = []  
+        const monthData = []                                          
         for (let month = 1; month < 13; month++) {
           const { data } = await axios.get(`https://data.police.uk/api/crimes-street/all-crime?lat=${latitude}&lng=${longitude}&date=${filteredYear}-${month}`)
-          newArray.push(data)
-          setCrimesPerMonth(crimesPerMonth[month] = data.length)
-          monthWithCrimesData.push({
+          // newArray.push(data)
+          // setCrimesPerMonth(crimesPerMonth[month] = data.length)
+          newArray.push(data.length)                                              // ? Number of crimes per each month, pushed inside a new, empty array.
+          monthWithCrimesData.push(data)                                          // ? Data for each month separately, pushed inside of a new, empty array.
+          monthData.push({                                                        // ? Creating an array of month-numberOfCrimesPerMonth pair, pushed inside of a new, empty array.
             name: months[month],
             crimesNumber: crimesPerMonth[month] = data.length,
           })
-
-          const reducer = (previousValue, currentValue) => previousValue + currentValue
-          const finalNumber = crimesPerMonth.reduce(reducer)
-          setCrimesNumberPerYear(finalNumber)
-          setCrimes(newArray)
         }
-        setSeparateMonthData(monthWithCrimesData)
+      
+        console.log('monthData >>>>', monthData)
 
-        const mergedArray = [].concat.apply([], newArray)
-        setMergedCrimes(mergedArray)
+        const reducer = (previousValue, currentValue) => previousValue + currentValue
+        const finalNumber = newArray.reduce(reducer)
+        setNumberYear(finalNumber)
+
+        // ! ZAENKRAT DELUJE
+        setIsLoading(true)
+
+        // ! KONEC - pazi da je zgornja vrstica zadnja!
+        //   setCrimesNumberPerYear(finalNumber)
+        //   setCrimes(newArray)
+        // }
+        // setSeparateMonthData(monthWithCrimesData)
+        // console.log('separateMonthsData >>>>', monthWithCrimesData)
+
+        const mergedArray = [].concat.apply([], monthWithCrimesData)
+        // console.log('mergedArray >>>>', mergedArray)
+        // setMergedCrimes(mergedArray)
 
         const allCategoriesData = mergedArray.map(item => item.category)
         setCategories(allCategoriesData)
         
+
       } catch (err) {
         setHasError(true)
         console.log(err.message)
@@ -140,28 +163,25 @@ const Crimes = props => {
     }
     getData()
   
-  }, [latitude, longitude, filteredYear, crimesPerMonth, mergedCrimes, crimes, categories])
-
-  // console.log('All Categories inside mergedArray [unsorted] >>>', categories)
-  console.log('Posamezni mesec >>>', separateMonthData)
+  }, [latitude, longitude, crimes, crimesPerMonth, filteredYear])
 
 
+
+  // ! How many categories? 
   const howManyTimesEachCategory = array => array.reduce((obj, e) => {
     obj[e] = (obj[e] || 0) + 1
     return obj
   }, {})
   
-  // console.log('Working? >>>>', typeof howManyTimesEachCategory(categories))
+  // console.log('Working? >>>>', howManyTimesEachCategory(categories))
   
-
+  // ! Getting an annual number of committed crimes per category. 
   const object = howManyTimesEachCategory(categories)
   const result = Object
     .keys(object)
     .map(item => ({ [item]: object[item] }))
-  //   .entries(object)
+  // //   .entries(object)
     
-  console.log('result', result)
-
   // const dataCategories = {
   //   rows: result,
   // }
@@ -182,14 +202,33 @@ const Crimes = props => {
   
   return (
     <Fragment>
-      <h1>Test 01</h1>
-      <CrimesFilter selected={filteredYear} onChangeFilter={filteredChangeHandler} />
+
+      {/* <CrimesFilter selected={filteredYear} onChangeFilter={filteredChangeHandler} /> */}
       
-      <CrimesChart crimes={separateMonthData}/>
+      {isLoading ? 
+        (<p>Crimes per year: {numberYear}</p>) 
+        
+        : 
+        
+        (<div className="lds-roller">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>) 
+        
+      }
+      
+      
+      {/* <CrimesChart crimes={separateMonthData}/> */}
 
       <>
 
-        {mergedCrimes ?
+        {/* {mergedCrimes ?
         
           <>
 
@@ -230,17 +269,7 @@ const Crimes = props => {
               })
             } */}
 
-          </> :
-
-          hasError ? 
-
-            <h2>Something has gone wrong</h2>
-
-            :
-
-            <h2>Loading ...</h2>
-
-        }
+          
 
       </>
 
