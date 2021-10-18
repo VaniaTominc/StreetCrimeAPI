@@ -3,9 +3,9 @@ import React, { useState, useEffect, Fragment, useCallback } from 'react'
 import axios from 'axios'
 import CrimesFilter from './CrimesFilter'
 import CrimesChart from './CrimesChart'
-import { PieChart, Pie, Sector } from 'recharts'
+import { PieChart, Pie, Sector, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts'
 
-const renderActiveShape = (props) => {
+const renderActiveShape = props => {
   const RADIAN = Math.PI / 180
   const {
     cx,
@@ -102,7 +102,7 @@ const Crimes = props => {
   const [separateMonthData, setSeparateMonthData] = useState([])
 
 
-  // ! PLAYING WITH NUMBERS
+  // ! ------------------------- START PLAYING WITH NUMBERS ----------------------------------
 
   const [numberYear, setNumberYear] = useState('')
 
@@ -110,14 +110,25 @@ const Crimes = props => {
 
   const [categories, setCategories] = useState([])
 
-  // ! END PLAYING WITH NUMBERS
+  const [monthData, setMonthData] = useState([])
 
+  // ! ------------------------- END PLAYING WITH NUMBERS ------------------------------------
+
+  // ! ------------------------- START PLAYING WITH GRAPHS -----------------------------------
+
+  // ! ------------------------- END PLAYING WITH GRAPHS -------------------------------------
+
+  // ! ------------------------- START PLAYING WITH MAPS -----------------------------------
+
+  const [locations, setLocations] = useState([])
+
+  // ! ------------------------- END PLAYING WITH MAPS -------------------------------------
 
   useEffect(() => {
     const getData = async () => {
       try {
         const newArray = []
-        const months = [null,'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+        const months = [null,'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
         const monthWithCrimesData = []  
         const monthData = []                                          
         for (let month = 1; month < 13; month++) {
@@ -132,7 +143,8 @@ const Crimes = props => {
           })
         }
       
-        console.log('monthData >>>>', monthData)
+        // console.log('monthData >>>>', monthData)
+        setMonthData(monthData)
 
         const reducer = (previousValue, currentValue) => previousValue + currentValue
         const finalNumber = newArray.reduce(reducer)
@@ -149,8 +161,12 @@ const Crimes = props => {
         // console.log('separateMonthsData >>>>', monthWithCrimesData)
 
         const mergedArray = [].concat.apply([], monthWithCrimesData)
-        // console.log('mergedArray >>>>', mergedArray)
+        console.log('mergedArray >>>>', mergedArray)
         // setMergedCrimes(mergedArray)
+        // setLocations(mergedArray)
+
+        const allLocations = mergedArray.map(item => item.location)
+        setLocations(allLocations)
 
         const allCategoriesData = mergedArray.map(item => item.category)
         setCategories(allCategoriesData)
@@ -165,7 +181,7 @@ const Crimes = props => {
   
   }, [latitude, longitude, crimes, crimesPerMonth, filteredYear])
 
-
+  console.log('ALL LOCATIONS >>>>', locations)
 
   // ! How many categories? 
   const howManyTimesEachCategory = array => array.reduce((obj, e) => {
@@ -178,13 +194,21 @@ const Crimes = props => {
   // ! Getting an annual number of committed crimes per category. 
   const object = howManyTimesEachCategory(categories)
   const result = Object
-    .keys(object)
-    .map(item => ({ [item]: object[item] }))
-  // //   .entries(object)
+    .entries(object)
     
-  // const dataCategories = {
-  //   rows: result,
-  // }
+
+  // ! Converting an array with nested arrays into an array with nested objects.
+  // console.log('result >>>>', result)         gives me bellow result
+  // ['anti-social-behaviour', 8308]
+  // ['anti-social-behaviour', 8308] >>>>>> {'name': 'anti-social-behaviour', 'value': 8308}
+
+  const arrayToObject = result.map(item => {
+    const [name, value] = item
+    const newObject = { name, value }
+    return newObject
+  })
+
+  // console.log('testing >>>>', arrayToObject)
 
 
   // ! PieChart Months
@@ -206,7 +230,53 @@ const Crimes = props => {
       {/* <CrimesFilter selected={filteredYear} onChangeFilter={filteredChangeHandler} /> */}
       
       {isLoading ? 
-        (<p>Crimes per year: {numberYear}</p>) 
+        (<>
+          <p>Crimes per year: {numberYear}</p>
+ 
+          <div>
+            <LineChart
+              width={1000}
+              height={600}
+              data={monthData}
+              margin={{
+                top: 5,
+                right: 30,
+                left: 20,
+                bottom: 5,
+              }}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="name" />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              <Line
+                type="monotone"
+                dataKey="crimesNumber"
+                stroke="#8884d8"
+                activeDot={{ r: 8 }}
+              />
+            </LineChart>
+          </div>
+
+
+          <div>
+            <PieChart width={1200} height={800}>
+              <Pie
+                activeIndex={activeIndex}
+                activeShape={renderActiveShape}
+                data={arrayToObject}
+                cx={400}
+                cy={200}
+                innerRadius={120}
+                outerRadius={160}
+                fill="#8884d8"
+                dataKey="value"
+                onMouseEnter={onPieEnter}
+              />
+            </PieChart>
+          </div>
+        </>) 
         
         : 
         
