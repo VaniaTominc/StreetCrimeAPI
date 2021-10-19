@@ -3,36 +3,19 @@
   padding: 1rem;
   border-radius: 12px;
   background-color: #f8dfff;
-  text-align: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
   height: 10rem;
+  text-align: center;
 }
 
 .chart-bar {
-  height: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-
-.chart-bar__inner {
-  height: 100%;
-  width: 100%;
-  border: 1px solid #313131;
-  border-radius: 12px;
-  background-color: #c3b4f3;
-  overflow: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -40,16 +23,33 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  height: 100%;
+}
+
+.chart-bar__inner {
+  border: 1px solid #313131;
+  border-radius: 12px;
+  background-color: #c3b4f3;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100%;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+  overflow: hidden;
+  width: 100%;
 }
 
 .chart-bar__fill {
   background-color: #4826b9;
-  width: 100%;
   -webkit-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
+  width: 100%;
 }
 
 .chart-bar__label {
@@ -378,6 +378,9 @@ h2 {
 }
 
 .test-positioning {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -385,39 +388,32 @@ h2 {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 
 .crimes-positioning {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
 
 .number_year_style {
-  text-align: center;
   color: red;
   font-size: 3rem;
   letter-spacing: 2px;
   line-height: .1;
   margin-top: .5rem;
+  text-align: center;
 }
 
 .title_crimes_area {
   font-size: 3rem;
   text-align: center;
-}
-
-* {
-  font-family: 'Oswald', sans-serif;
 }
 
 h2.positioning_h_two_show_page {
@@ -433,8 +429,8 @@ h2.positioning_h_two_show_page {
 }
 
 img.police_icon_home_page {
-  width: 25px;
   margin-left: .5rem;
+  width: 25px;
 }
 
 .home_page_icon {
@@ -487,45 +483,46 @@ img.police_icon_home_page {
 }
 
 .playing {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 select {
-  width: 150px;
-  height: 90px;
-  font-size: 3rem;
-  padding: 10px 0 10px 30px;
   background: transparent;
   border: none;
-  font-weight: 500;
   color: red;
+  font-size: 3rem;
+  font-weight: 500;
+  height: 90px;
   margin-left: -20px;
+  padding: 10px 0 10px 30px;
+  width: 150px;
 }
 
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  font-family: 'Oswald', sans-serif;
 }
 
 body {
-  position: relative;
-  margin: 0;
-  padding: 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: white;
+  background: radial-gradient(circle, white 0%, rgba(0, 142, 251, 0.966824) 100%);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background: white;
-  background: radial-gradient(circle, white 0%, rgba(0, 142, 251, 0.966824) 100%);
+  margin: 0;
+  padding: 0;
+  position: relative;
 }
 /*# sourceMappingURL=main.css.map */

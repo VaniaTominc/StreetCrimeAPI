@@ -12,12 +12,12 @@ const ResultCard = props => {
 
     <div>
       
-      <NavLink to='/' className='home_page_icon'>
-        <div className='icons_position'>
-          <FaHome size={40} className='home_button_style' />
+      <NavLink to='/' className="home_page_icon">
+        <div className="icons_position">
+          <FaHome size={40} className="home_button_style" />
           <BsArrowLeft size={20} />
         </div>
-        <img className='police_icon_home_page' src='https://i.ibb.co/JxJsB14/Untitled-2.png' alt='police guy home icon' title='Go home' />
+        <img className="police_icon_home_page" src="https://i.ibb.co/JxJsB14/Untitled-2.png" alt="police guy home icon" title="Go home" />
       </NavLink>
 
       <div>

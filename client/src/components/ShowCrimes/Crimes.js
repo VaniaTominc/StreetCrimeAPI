@@ -6,7 +6,9 @@ import Map from './Map'
 import Spinner from '../Helpers/Spinner'
 
 const renderActiveShape = props => {
+
   const RADIAN = Math.PI / 180
+
   const {
     cx,
     cy,
@@ -79,6 +81,8 @@ const renderActiveShape = props => {
 }
 
 
+// ! Main component
+
 const Crimes = props => {
 
   // console.log('props in Crimes >>>>', props.latitude)
@@ -108,8 +112,9 @@ const Crimes = props => {
   // ! ------------------------- END PLAYING WITH NUMBERS ------------------------------------
 
 
-  // Storing or crimes' coordinates
+  // Storing of crimes' coordinates
   const [locations, setLocations] = useState([])
+
 
   useEffect(() => {
 
@@ -216,15 +221,15 @@ const Crimes = props => {
 
         {isLoading ? 
           (<>
-            <div className='playing'>
-              <h2 className='title_crimes_area'>Area of {title} in </h2>
+            <div className="playing">
+              <h2 className="title_crimes_area">Area of {title} in </h2>
               {/* <span className='year_style'>{filteredYear}</span> */}
               <select onChange={handleFilterYear}>
-                <option value='2020' className='dropdown-item'>2020</option>
-                <option value='2019' className='dropdown-item'>2019</option>
+                <option value="2020" className="dropdown-item">2020</option>
+                <option value="2019" className="dropdown-item">2019</option>
               </select>
             </div>
-            <div className='crimes-positioning'>
+            <div className="crimes-positioning">
               <Map coordinates={props.item} />
             </div>
 
@@ -232,21 +237,21 @@ const Crimes = props => {
             <div>
               {isLoading ?
                 (
-                  <h2 className='number_year_style'>{numberYear}</h2>
+                  <h2 className="number_year_style">{numberYear}</h2>
                 )
 
                 :
 
                 (
-                  <h2 className='number_year_style'>Loading ...</h2>
+                  <h2 className="number_year_style">Loading ...</h2>
                 )
               }
 
             </div>
  
-            <section className='graph_section'>
+            <section className="graph_section">
 
-              <h2 className='positioning_h_two_show_page'>Crimes Per Month</h2>
+              <h2 className="positioning_h_two_show_page">Crimes Per Month</h2>
 
               <LineChart
                 width={1000}
@@ -274,8 +279,8 @@ const Crimes = props => {
 
             </section>
 
-            <section className='pie_chart_section'>
-              <h2 className='positioning_h_two_show_page'>Crimes frequency</h2>
+            <section className="pie_chart_section">
+              <h2 className="positioning_h_two_show_page">Crimes frequency</h2>
 
               <PieChart width={1200} height={800}>
                 <Pie

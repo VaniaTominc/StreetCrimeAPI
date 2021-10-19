@@ -1,33 +1,27 @@
 .test-positioning {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .crimes-positioning {
-  display: flex;
   align-items: center;
+  display: flex;
   justify-content: space-between;
 }
 
 .number_year_style {
-  text-align: center;
   color: red;
   font-size: 3rem;
   letter-spacing: 2px;
   line-height: .1;
   margin-top: .5rem;
+  text-align: center;
 }
 
 .title_crimes_area {
   font-size: 3rem;
   text-align: center;
-}
-
-// Pie
-
-* {
-  font-family: 'Oswald', sans-serif;
 }
 
 
@@ -46,8 +40,8 @@ h2.positioning_h_two_show_page {
 }
 
 img.police_icon_home_page {
-  width: 25px;
   margin-left: .5rem;
+  width: 25px;
 }
 
 .home_page_icon {
@@ -85,18 +79,18 @@ img.police_icon_home_page {
 }
 
 .playing {
-  display: flex;
   align-items: center;
+  display: flex;
 }
 
 select {
-  width: 150px;
-  height: 90px;
-  font-size: 3rem;
-  padding: 10px 0 10px 30px;
   background: transparent;
   border: none;
-  font-weight: 500;
   color: red;
+  font-size: 3rem;
+  font-weight: 500;
+  height: 90px;
   margin-left: -20px;
+  padding: 10px 0 10px 30px;
+  width: 150px;
 }

@@ -1,30 +1,30 @@
 header {
-  display: flex;
   align-items: flex-end;
+  display: flex;
   flex-direction: column;
   margin-bottom: 4%;
 }
 
 .top-header-position {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
   margin-top: 10%;
 }
 
 h1.main-heading {
+  color: #07051a;
   font-family: 'Oswald', sans-serif;
-  letter-spacing: 5px;
   font-size: 4rem;
+  letter-spacing: 5px;
   line-height: 1;
   text-transform: uppercase;
   text-align: center;
-  color: #07051a;
 }
 
 h2.sub-heading {
-  font-family: 'Oswald', sans-serif;
   color: red;
+  font-family: 'Oswald', sans-serif;
   font-size: 2rem;
   line-height: .5;
   margin-top: -1rem;
@@ -36,33 +36,32 @@ img.police-icon-head {
 }
 
 form{
+  background: white;
+  border: 4px solid white;
+  border-radius: 50px;
+  box-sizing: border-box;
+  height: 100px;
+  left: 50%;
+  padding: 5px;
   position: relative;
   top: 50%;
-  left: 50%;
   transform: translate(-50%,-50%);
   transition: all 1s;
   width: 100px;
-  height: 100px;
-  background: white;
-  box-sizing: border-box;
-  border-radius: 50px;
-  border: 4px solid white;
-  padding: 5px;
 }
 
 input{
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;;
-  height: 85px;
-  // line-height: 30px;
-  outline: 0;
   border: 0;
+  border-radius: 40px;
   display: none;
   font-size: 2rem;
-  border-radius: 40px;
+  height: 85px;
+  left: 0;
+  outline: 0;
   padding: 0 20px;
+  position: absolute;
+  top: 0;
+  width: 100%;;
 }
 
 input[type="search"]::-webkit-search-decoration,
@@ -73,27 +72,26 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
 
 .fa{
   box-sizing: border-box;
-  padding: 10px;
-  width: 85px;
-  height: 85px;
-  position: absolute;
-  top: 0;
-  right: 0;
-  // border-radius: 50%;
   color: #07051a;
-  text-align: center;
   font-size: 1.2em;
+  height: 85px;
+  padding: 10px;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 0;
   transition: all 1s;
+  width: 85px;
 }
 
 form:hover,
-form:valid{
-  width: 600px;
+form:valid {
   cursor: pointer;
+  width: 600px;
 }
 
 form:hover input,
-form:valid input{
+form:valid input {
   display: block;
 }
 

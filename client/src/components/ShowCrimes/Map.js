@@ -4,8 +4,6 @@ import { FaMapMarkerAlt } from 'react-icons/fa'
 
 const Map = props => {
 
-  // console.log('incoming data props Map >>>>', props.coordinates[0])
-
   const [viewport, setViewport] = useState({
     latitude: props.coordinates[0],
     longitude: props.coordinates[1],
@@ -20,7 +18,7 @@ const Map = props => {
 
   return (
 
-    <section className='map_container'> 
+    <section className="map_container"> 
       <ReactMapGL 
         {...viewport}
         mapboxApiAccessToken={'pk.eyJ1IjoidnRvbWluYyIsImEiOiJja3V2eTAyZ2QxenNiMm9xdjhtNGVidmdzIn0.okxM22u89LcjmDTsFeQqHQ'}
@@ -34,7 +32,7 @@ const Map = props => {
           latitude={latitude}
           longitude={longitude}
         >
-          <FaMapMarkerAlt className='market-icon'/>
+          <FaMapMarkerAlt className="market-icon"/>
         </Marker>
 
       </ReactMapGL>
