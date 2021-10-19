@@ -1,0 +1,16 @@
+#map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+
+div.mapboxgl-map {
+  border-radius: 10px;
+  border: 1px solid red;
+}
+
+.market-icon {
+  width: 30px;
+  height: 30px;
+  color: red;
+}

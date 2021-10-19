@@ -1,0 +1,112 @@
+header {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  margin-bottom: 4%;
+}
+
+.top-header-position {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10%;
+}
+
+h1.main-heading {
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: 5px;
+  font-size: 4rem;
+  line-height: 1;
+  text-transform: uppercase;
+  text-align: center;
+  color: #07051a;
+}
+
+h2.sub-heading {
+  font-family: 'Oswald', sans-serif;
+  color: red;
+  font-size: 2rem;
+  line-height: .5;
+  margin-top: -1rem;
+  margin-bottom: 3rem;
+}
+
+img.police-icon-head {
+  width: 200px;
+}
+
+form{
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  transition: all 1s;
+  width: 100px;
+  height: 100px;
+  background: white;
+  box-sizing: border-box;
+  border-radius: 50px;
+  border: 4px solid white;
+  padding: 5px;
+}
+
+input{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;;
+  height: 85px;
+  // line-height: 30px;
+  outline: 0;
+  border: 0;
+  display: none;
+  font-size: 2rem;
+  border-radius: 40px;
+  padding: 0 20px;
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration { display: none; }
+
+
+.fa{
+  box-sizing: border-box;
+  padding: 10px;
+  width: 85px;
+  height: 85px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  // border-radius: 50%;
+  color: #07051a;
+  text-align: center;
+  font-size: 1.2em;
+  transition: all 1s;
+}
+
+form:hover,
+form:valid{
+  width: 600px;
+  cursor: pointer;
+}
+
+form:hover input,
+form:valid input{
+  display: block;
+}
+
+form:hover .fa,
+form:valid .fa{
+  color: #07051a;
+}
+
+section.search_bar_section {
+  margin-bottom: 14.1rem;
+}
+
+header.header_section {
+  display: flex;
+}
+

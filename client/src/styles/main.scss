@@ -1,19 +1,23 @@
 @import 'chart';
 @import 'chart-bar';
+@import 'landing-page-search';
+@import 'map';
 @import 'spinner';
+@import 'footer';
+@import 'show-result';
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500&display=swap');
 
-:root {
-  background: #1b4080;
+* {
+  box-sizing: border-box;
 }
 
-input {
-  width: 500px;
-  height: 50px;
-  border: 1px solid black;
-  border-radius: 5px;
-  font-size: 25px;
-}
-
-input[type="text"] {
-  padding: 10px;
+body { 
+  position: relative;           // I have to use this option if I want my footer at the bottom of page.
+  margin: 0; 
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(255,255,255);
+  background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(0,142,251,0.9668242296918768) 100%);
 }

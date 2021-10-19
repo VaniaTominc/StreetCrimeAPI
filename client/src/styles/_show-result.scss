@@ -1,0 +1,102 @@
+.test-positioning {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.crimes-positioning {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.number_year_style {
+  text-align: center;
+  color: red;
+  font-size: 3rem;
+  letter-spacing: 2px;
+  line-height: .1;
+  margin-top: .5rem;
+}
+
+.title_crimes_area {
+  font-size: 3rem;
+  text-align: center;
+}
+
+// Pie
+
+* {
+  font-family: 'Oswald', sans-serif;
+}
+
+
+h2.positioning_h_two_show_page {
+  text-align: center;
+}
+
+.graph_section {
+  h2 {
+    margin-bottom: 2rem;
+  }
+}
+
+.pie_chart_section {
+  margin-top: 2rem;
+}
+
+img.police_icon_home_page {
+  width: 25px;
+  margin-left: .5rem;
+}
+
+.home_page_icon {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.year_style {
+  color: red;
+  opacity: .75;
+}
+
+.home_button_style {
+  color: black;
+  margin-right: .5rem;
+}
+
+.icons_position {
+  display: flex;
+  align-items: center;
+  color: black;
+}
+
+
+.testing-flex {
+  display: flex;
+  width: 100%;
+  div {
+    flex-grow: 14;
+  }
+  h2 {
+    flex-grow: 1;
+  }
+}
+
+.playing {
+  display: flex;
+  align-items: center;
+}
+
+select {
+  width: 150px;
+  height: 90px;
+  font-size: 3rem;
+  padding: 10px 0 10px 30px;
+  background: transparent;
+  border: none;
+  font-weight: 500;
+  color: red;
+  margin-left: -20px;
+}

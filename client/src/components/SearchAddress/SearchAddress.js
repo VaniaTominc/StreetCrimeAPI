@@ -1,18 +1,17 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
-import Crimes from '../ShowCrimes/Crimes'
-import ResultCard from '../ShowCrimes/ResultCard'
+
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { FaSearch } from 'react-icons/fa'
 
 
-const SearchAddress = props => {
+const SearchAddress = () => {
 
   const [state, setState] = useState({
     address: '',
   })
 
-  console.log('state >>>>', state)
+  // console.log('state >>>>', state)
 
   const handleInputChange = (event) => {
     const { name, value } = event.target
@@ -21,96 +20,56 @@ const SearchAddress = props => {
       [name]: value }))
   }
 
-  // const [address, setAddress] = useState([])
+  // ! Preventing enter from being hit.
+  const submitHandler = event => {
+    event.preventDefault()
+  }
 
-  // // ! Handle change
-  // const [addressValue, setAddressValue] = useState('')
-  // const [searchAddress, setSearchAddress] = useState('')
-
-  // const handleChange = event => {
-  //   setAddressValue(event.target.value)
-  // }
-
-  // const handleSubmit = event => {
-  //   event.preventDefault()
-  //   setSearchAddress(addressValue)
-  //   setAddressValue('')
-  //   console.log('You have search for - ' + addressValue)
-  // }
-
-  // let latitude
-  // let longitude
-
-  // const [latitudeLongitude, setLatitudeLongitude] = useState([latitude, longitude])
   
-
-  // useEffect(() => {
-  //   const getData = async () => {
-  //     try {
-  //       const myAPIkey = 'HU9owSyl35RN2CbbvwDfMCY37OqxdnTeIf4yyC6UxAc'
-  //       const { data } = await axios.get(`https://geocode.search.hereapi.com/v1/geocode?q=${searchAddress}&apiKey=${myAPIkey}`)
-        
-  //       // Filter only address that is in the UK
-  //       const britishAddress = data.items.filter(item => item.address.countryCode === 'GBR')
-  //       console.log('British address >>>', britishAddress)
-        
-  //       setAddress(britishAddress)
-  //       // console.log('Incoming data >>>', data.items)
-
-
-  //       britishAddress.map(item => {
-  //         // eslint-disable-next-line
-  //         return setLatitudeLongitude([latitude = item.position.lat, longitude = item.position.lng])
-  //       })
-  //     } catch (err) {
-  //       console.log('Something is wrong with the data')
-  //     }
-  //   }
-  //   getData()
-  // }, [searchAddress])
-
-
-
   return (
     <>
-      <h1>Police API</h1>
 
-      <h2>Search your address</h2>
+      <header className='header_section'>
+        <div className='top-header-position'>
+          <img className='police-icon-head' src='https://i.ibb.co/JxJsB14/Untitled-2.png' alt='police-guy' />
+          <h1 className='main-heading'>Check street crime in your area</h1>
+          <div className='testing-flex'>
+            <div></div>
+            <h2 className='sub-heading'>2020 Edition</h2>
+          </div>
+        </div>
+      </header>
 
-      <form>
-        <input
-          type="text"
-          placeholder="Enter address"
-          name="address"
-          value={state.address}
-          onChange={handleInputChange}
-        />
+      <section className='search_bar_section'>
 
-        <Link
-          to={{
-            pathname: '/results',
-            state }}
-        >
-          Register
-        </Link>
-      </form>
+        <form action='' onSubmit={submitHandler} >
 
-      {/* {address ?
-        <>
-          {address && address.map(item => {
-            return (
-              <div key={item.id}>
-                <h2>Address: {item.title}</h2>
-                <p>Position:</p>
-                <ul>
-                  <li>Latitude: {item.position.lat}</li>
-                  <li>Longitude: {item.position.lng}</li>
-                </ul>
-              </div>
-            )
-          })}
-          {/* <ResultCard item={latitudeLongitude}/> */}
+          <input 
+            type="search" 
+            placeholder="Search address..." 
+            autoFocus 
+            required 
+            name='address'
+            value={state.address}
+            onChange={handleInputChange}
+          />
 
+          <Link
+            to={{
+              pathname: '/results',
+              state }}
+          >
+            <FaSearch className='fa'/>
+
+          </Link>
+          {/* <a href="javascript:void(0)" id="clear-btn">Clear</a> */}
+
+        </form>
+
+      </section>
+
+      
+      
     </>
   )
 }

@@ -43,14 +43,11 @@ const ShowCrimes = props => {
     <>
       {address && address.map(item => {
         return (
-          <><div key={item.id}>
-            <h2>Address: {item.title}</h2>
-            <p>Position:</p>
-            <ul>
-              <li>Latitude: {item.position.lat}</li>
-              <li>Longitude: {item.position.lng}</li>
-            </ul>
-          </div><Crimes item={latitudeLongitude} /></>
+          <>
+            <div key={item.id} className='test-positioning'>
+              <Crimes item={latitudeLongitude} title={item.title}/>
+            </div>
+          </>
         )
       })}
     </>
